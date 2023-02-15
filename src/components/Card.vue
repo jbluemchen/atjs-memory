@@ -48,6 +48,7 @@ export default {
 .card {
   border: 5px solid #f00000;
   position: relative;
+  padding: 0px;
 }
 .card-face {
     width: 100%;
