@@ -1,5 +1,5 @@
 <script>
-import Card from './components/card.vue'
+import Card from './components/Card.vue'
 export default{
   name: 'App',
   components: {
