@@ -1,4 +1,5 @@
 <script>
+import { ref } from 'vue'
 import Card from './components/Card.vue'
 export default{
   name: 'App',
@@ -6,14 +7,23 @@ export default{
     Card
   },
   setup() {
-    const cardList = []
+    const cardList = ref([])
 
     for (let i= 0; i < 12; i++) {
-      cardList.push(i)
+      cardList.value.push({
+          value: i,
+          visible: false,
+          position: i
+      })
+    }
+
+    const flipCard = () => {
+      cardList.value[payload.position].visible = true
     }
 
     return {
-      cardList
+      cardList,
+      flipCard
     }
     
   }
@@ -26,7 +36,10 @@ export default{
     <Card 
     v-for="(card, index) in cardList"
     :key="`card-${index}`"
-    :value="card"
+    :value="card.value"
+    :visible="card.visible"
+    :position="card.position"
+    @select-card="flipCard"
     />
   </section>
 </template>
@@ -39,9 +52,7 @@ export default{
   color: #2c3e50;
   margin-top: 60px;
 }
-.card {
-  border: 5px solid #ccc
-}
+
 .game-board{
   display: grid;
   grid-template-columns: 100px 100px 100px 100px;
