@@ -52,4 +52,8 @@ export default {
     background-color: aqua;
     color: aliceblue;
 }
+.card-face.back {
+    background-color: rebeccapurple;
+    color: aliceblue;
+}
 </style>

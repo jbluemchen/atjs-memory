@@ -13,7 +13,7 @@ export default{
       cardList.value.push({
           value: i,
           visible: false,
-          position: i
+          position: i,
       })
     }
 
