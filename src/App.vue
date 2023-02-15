@@ -1,22 +1,33 @@
 <script>
+import Card from './components/card.vue'
 export default{
-  name: 'App'
+  name: 'App',
+  components: {
+    Card
+  },
+  setup() {
+    const cardList = []
+
+    for (let i= 0; i < 12; i++) {
+      cardList.push(i)
+    }
+
+    return {
+      cardList
+    }
+    
+  }
 }
 </script>
 
 <template>
   <h1>Sound memory</h1>
   <section class="game-board">
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
+    <Card 
+    v-for="(card, index) in cardList"
+    :key="`card-${index}`"
+    :value="card"
+    />
   </section>
 </template>
 
