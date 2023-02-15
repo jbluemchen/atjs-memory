@@ -13,7 +13,7 @@ export default{
 
     for (let i= 0; i < 12; i++) {
       cardList.value.push({
-          value: i,
+          value: 10,
           visible: false,
           position: i,
           matched: false
