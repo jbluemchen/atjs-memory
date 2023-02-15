@@ -17,7 +17,7 @@ export default{
       })
     }
 
-    const flipCard = () => {
+    const flipCard = payload => {
       cardList.value[payload.position].visible = true
     }
 
