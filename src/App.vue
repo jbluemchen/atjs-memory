@@ -1,5 +1,5 @@
 <script>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import Card from './components/Card.vue'
 export default{
   name: 'App',
@@ -8,22 +8,60 @@ export default{
   },
   setup() {
     const cardList = ref([])
+    const userSelected = ref([])
+    const status = ref('')
 
     for (let i= 0; i < 12; i++) {
       cardList.value.push({
           value: i,
           visible: false,
           position: i,
+          matched: false
       })
     }
 
     const flipCard = payload => {
       cardList.value[payload.position].visible = true
+
+      if (userSelected.value[0]) {
+        userSelected.value[1] = payload
+      } else {
+        userSelected.value[0] = payload
+      }
     }
+
+    watch(userSelected, currentValue => {
+      if (currentValue.lenght === 2) {
+        
+        const cardOne = currentValue[0]
+        const cardTwo = currentValue[1]
+
+        if (cardOne.faceValue === cardTwo.faceValue) {
+          status.value = 'Matched!'
+
+          cardList.value[cardOne.position].matched = true
+          cardList.value[cardTwo.position].matched = true
+
+        } else {
+          status.value = 'Mismatched!'
+
+          cardList.value[cardOne.position].visible = false
+        cardList.value[cardTwo.position].visible = false
+        }
+
+      
+
+        userSelected.lenght = 0
+      }
+      },
+      { deep : true }
+    )
 
     return {
       cardList,
-      flipCard
+      flipCard,
+      userSelected,
+      status
     }
     
   }
@@ -36,12 +74,14 @@ export default{
     <Card 
     v-for="(card, index) in cardList"
     :key="`card-${index}`"
+    :matched="card.matched"
     :value="card.value"
     :visible="card.visible"
     :position="card.position"
     @select-card="flipCard"
     />
   </section>
+  <h2>{{ status }}</h2>
 </template>
 
 
