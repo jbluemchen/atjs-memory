@@ -32,50 +32,49 @@ export default{
     const playAgain = () => {
       shuffleCards()
 
-      cardList.value = cardList.value.map(card, index => {
-        return {
-          ...card,
-          matched: false,
-          position: index,
-          visible: false
-        }
-      })
+      cardList.value.forEach((card, index) => {
+      card.position = index;
+        card.visible = false;
+        card.matched = false;
+    });
+
+  
     }
 
     const cardItems = [1, 2, 3, 4, 5, 6]
 
     cardItems.forEach(item => {
       cardList.value.push({
-          value: item,
-          visible: false,
-          position: null,
-          matched: false
+        value: item,
+        variant: 1,
+        visible: false,
+        position: null,
+        matched: false
       })
-
       cardList.value.push({
-          value: item,
-          visible: false,
-          position: null,
-          matched: false
+        value: item,
+        variant: 2,
+        visible: false,
+        position: null,
+        matched: false
       })
     })
+
+    shuffleCards()
 
 
     cardList.value.forEach((card, index) => {
     card.position = index;
     });
-    // cardList.value = cardList.value.map(card, index => {
-    //     return {
-    //       ...card,
-    //       position: index
-    //     }
-    //   })
   
 
     const flipCard = payload => {
       cardList.value[payload.position].visible = true
 
-      if (userSelected.value[0]) {
+      if (payload.matched === true) {
+        return
+      } else {
+        if (userSelected.value[0]) {
         if (userSelected.value[0].position === 
         payload.position && 
         userSelected.value[0].faceValue === 
@@ -88,36 +87,28 @@ export default{
       } else {
         userSelected.value[0] = payload
       }
+      }
     }
 
-    watch(userSelected, currentValue => {
-      if (currentValue.lenght === 2) {
-        
-        const cardOne = currentValue[0]
-        const cardTwo = currentValue[1]
 
     
-
-        if (cardOne.faceValue === cardTwo.faceValue) {
-        
-          cardList.value[cardOne.position].matched = true
-          cardList.value[cardTwo.position].matched = true
-
-        } else {
-
-          setTimeout(() => {
-
-            cardList.value[cardOne.position].visible = false
-            cardList.value[cardTwo.position].visible = false
-
-        }, 2000)
-          
+    watch(
+      userSelected,
+      currentValue => {
+        if (currentValue.length === 2) {
+          const cardOne = currentValue[0]
+          const cardTwo = currentValue[1]
+          if (cardOne.faceValue === cardTwo.faceValue) {
+            cardList.value[cardOne.position].matched = true
+            cardList.value[cardTwo.position].matched = true
+          } else {
+            setTimeout(() => {
+              cardList.value[cardOne.position].visible = false
+              cardList.value[cardTwo.position].visible = false
+            }, 2000)
+          }
+          userSelected.value.length = 0
         }
-
-      
-
-        userSelected.value.lenght = 0
-      }
       },
       { deep: true }
     )

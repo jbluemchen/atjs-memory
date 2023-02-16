@@ -26,7 +26,8 @@ export default {
         const selectCard = () => {
             context.emit('select-card', {
                 position: props.position,
-                faceValue: props.value
+                faceValue: props.value,
+                matched: props.matched
             })
         }
 
