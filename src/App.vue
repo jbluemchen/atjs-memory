@@ -1,19 +1,32 @@
 <script>
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import Card from './components/Card.vue'
 export default{
   name: 'App',
   components: {
     Card
   },
+
   setup() {
     const cardList = ref([])
     const userSelected = ref([])
-    const status = ref('')
+    const status = computed(() => {
+      if (remainingPairs.value === 0) {
+        return 'You win'
+      } else {
+        return `Remaining Pairs: ${remainingPairs}`
+      }
+    })
+    const remainingPairs = computed(() => {
+      const remainingCards = cardList.value.filter
+      (card => card.matched === false).length
 
-    for (let i= 0; i < 12; i++) {
+      return remainingCards / 2
+    })
+
+    for (let i = 0; i < 12; i++) {
       cardList.value.push({
-          value: 10,
+          value: 1,
           visible: false,
           position: i,
           matched: false
@@ -30,11 +43,13 @@ export default{
       }
     }
 
-    watch(userSelected, currentValue => {
+    watch(userSelected, (currentValue) => {
       if (currentValue.lenght === 2) {
         
         const cardOne = currentValue[0]
         const cardTwo = currentValue[1]
+
+    
 
         if (cardOne.faceValue === cardTwo.faceValue) {
           status.value = 'Matched!'
@@ -46,7 +61,7 @@ export default{
           status.value = 'Mismatched!'
 
           cardList.value[cardOne.position].visible = false
-        cardList.value[cardTwo.position].visible = false
+          cardList.value[cardTwo.position].visible = false
         }
 
       
@@ -54,7 +69,7 @@ export default{
         userSelected.lenght = 0
       }
       },
-      { deep : true }
+      { deep: true }
     )
 
     return {

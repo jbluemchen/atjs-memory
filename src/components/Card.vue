@@ -18,6 +18,7 @@ export default {
             default: false
         }
     },
+    
     setup(props, context) {
         const selectCard = () => {
             context.emit('select-card', {
@@ -46,7 +47,7 @@ export default {
 
 <style>
 .card {
-  border: 5px solid #f00000;
+  border: 5px solid #ccc;
   position: relative;
   padding: 0px;
 }
