@@ -29,6 +29,19 @@ export default{
       cardList.value = _.shuffle(cardList.value)
     }
 
+    const playAgain = () => {
+      shuffleCards()
+
+      cardList.value = cardList.value.map(card, index => {
+        return {
+          ...card,
+          matched: false,
+          position: index,
+          visible: false
+        }
+      })
+    }
+
     for (let i = 0; i < 12; i++) {
       cardList.value.push({
           value: 1,
@@ -57,13 +70,11 @@ export default{
     
 
         if (cardOne.faceValue === cardTwo.faceValue) {
-          status.value = 'Matched!'
-
+        
           cardList.value[cardOne.position].matched = true
           cardList.value[cardTwo.position].matched = true
 
         } else {
-          status.value = 'Mismatched!'
 
           cardList.value[cardOne.position].visible = false
           cardList.value[cardTwo.position].visible = false
@@ -82,7 +93,8 @@ export default{
       flipCard,
       userSelected,
       status,
-      shuffleCards
+      shuffleCards,
+      playAgain
     }
     
   }
@@ -103,7 +115,7 @@ export default{
     />
   </section>
   <h2>{{ status }}</h2>
-  <button @click="shuffleCards">Shuffle Cards</button>
+  <button @click="playAgain">Play again</button>
 </template>
 
 
