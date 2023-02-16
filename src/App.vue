@@ -1,7 +1,7 @@
 <script>
 import { computed, ref, watch } from 'vue'
 import _ from 'lodash'
-import Card from './components/Card.vue'
+import card from './components/Card.vue'
 export default{
   name: 'App',
   components: {
@@ -20,7 +20,7 @@ export default{
     })
     const remainingPairs = computed(() => {
       const remainingCards = cardList.value.filter
-      (Card => Card.matched === false).length
+      (card => card.matched === false).length
 
       return remainingCards / 2
     })
@@ -32,9 +32,9 @@ export default{
     const playAgain = () => {
       shuffleCards()
 
-      cardList.value = cardList.value.map(Card, index => {
+      cardList.value = cardList.value.map(card, index => {
         return {
-          ...Card,
+          ...card,
           matched: false,
           position: index,
           visible: false
@@ -60,9 +60,9 @@ export default{
       })
     })
 
-    cardList.value = cardList.value.map(Card, index => {
+    cardList.value = cardList.value.map(card, index => {
         return {
-          ...Card,
+          ...card,
           position: index
         }
       })
@@ -127,13 +127,13 @@ export default{
   <h1>Sound memory</h1>
   <section class="game-board">
     <Card 
-    v-for="(Card, index) in cardList"
-    :key="`Card-${index}`"
-    :matched="Card.matched"
-    :value="Card.value"
-    :visible="Card.visible"
-    :position="Card.position"
-    @select-Card="flipCard"
+    v-for="(card, index) in cardList"
+    :key="`card-${index}`"
+    :matched="card.matched"
+    :value="card.value"
+    :visible="card.visible"
+    :position="card.position"
+    @select-card="flipCard"
     />
   </section>
   <h2>{{ status }}</h2>
