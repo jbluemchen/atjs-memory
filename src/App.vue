@@ -32,9 +32,9 @@ export default{
     const playAgain = () => {
       shuffleCards()
 
-      cardList.value = cardList.value.map(card, index => {
+      cardList.value = cardList.value.map(Card, index => {
         return {
-          ...card,
+          ...Card,
           matched: false,
           position: index,
           visible: false
@@ -62,7 +62,7 @@ export default{
 
     cardList.value = cardList.value.map(card, index => {
         return {
-          ...card,
+          ...Card,
           position: index
         }
       })
