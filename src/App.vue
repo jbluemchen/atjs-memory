@@ -1,7 +1,7 @@
 <script>
 import { computed, ref, watch } from 'vue'
 import _ from 'lodash'
-import card from './components/Card.vue'
+import Card from './components/Card.vue'
 export default{
   name: 'App',
   components: {
@@ -32,9 +32,9 @@ export default{
     const playAgain = () => {
       shuffleCards()
 
-      cardList.value = cardList.value.map(card, index => {
+      cardList.value = cardList.value.map(Card, index => {
         return {
-          ...card,
+          ...Card,
           matched: false,
           position: index,
           visible: false
@@ -60,9 +60,9 @@ export default{
       })
     })
 
-    cardList.value = cardList.value.map(card, index => {
+    cardList.value = cardList.value.map(Card, index => {
         return {
-          ...card,
+          ...Card,
           position: index
         }
       })
@@ -72,6 +72,14 @@ export default{
       cardList.value[payload.position].visible = true
 
       if (userSelected.value[0]) {
+        if (userSelected.value[0].position === 
+        payload.position && 
+        userSelected.value[0].faceValue === 
+        payload.faceValue) {
+          return
+        } else {
+          userSelected.value[1] = payload
+        }
         userSelected.value[1] = payload
       } else {
         userSelected.value[0] = payload
