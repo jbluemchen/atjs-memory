@@ -60,12 +60,16 @@ export default{
       })
     })
 
-    cardList.value = cardList.value.map(card, index => {
-        return {
-          ...card,
-          position: index
-        }
-      })
+
+    cardList.value.forEach((card, index) => {
+    card.position = index;
+    });
+    // cardList.value = cardList.value.map(card, index => {
+    //     return {
+    //       ...card,
+    //       position: index
+    //     }
+    //   })
   
 
     const flipCard = payload => {
