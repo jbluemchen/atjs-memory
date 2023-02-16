@@ -1,7 +1,5 @@
 <script>
 
-import{ computed } from 'vue'
-
 export default {
     props: {
         matched: {
@@ -41,7 +39,6 @@ export default {
 <template>
     <div class="card" @click="selectCard">
         <div v-if="visible" class="card-face front">
-        {{ value }} - {{ position }} - {{ matched }}
         </div>
         <div v-else class="card-face back">
         Back
@@ -61,11 +58,9 @@ export default {
     position: absolute;
 }
 .card-face.front {
-    background-color: aqua;
-    color: aliceblue;
+    background-image: url(../pics/green-button.webp);
 }
 .card-face.back {
-    background-color: rebeccapurple;
-    color: aliceblue;
+    background-image: url(../pics/red-button.png);
 }
 </style>
