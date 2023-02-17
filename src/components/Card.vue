@@ -47,7 +47,7 @@ export default {
 
 <style>
 .card {
-  border: 5px solid #ccc;
+  border: 5px solid #fff;
   position: relative;
   padding: 0px;
 }

@@ -139,8 +139,9 @@ export default{
     @select-card="flipCard"
     />
   </section>
+  <p></p>
+  <button class="playAgain" @click="playAgain">Play again</button>
   <h2>{{ status }}</h2>
-  <button @click="playAgain">Play again</button>
 </template>
 
 
@@ -148,16 +149,31 @@ export default{
 #app {
   font-family: 'Courier New', Courier, monospace;
   text-align: center;
-  color: #2c3e50;
+  color: #111;
   margin-top: 60px;
 }
 
 .game-board{
   display: grid;
   grid-template-columns: 100px 100px 100px 100px;
-  grid-template-rows: 100px 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
   grid-column-gap: 30px;
   grid-row-gap: 30px;
   justify-content: center;
+}
+
+.playAgain {
+  font-weight: bold;
+  align-items: center;
+  background-color: hotpink;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  height: 48px;
+  position: relative;
+  text-align: center;
 }
 </style>
