@@ -41,7 +41,6 @@ export default {
         <div v-if="visible" class="card-face front">
         </div>
         <div v-else class="card-face back">
-        Back
     </div>
     </div>
 </template>
@@ -58,9 +57,9 @@ export default {
     position: absolute;
 }
 .card-face.front {
-    background-image: url(../pics/green-button.webp);
+    background-image: url(../pics/pause-button.jpg);
 }
 .card-face.back {
-    background-image: url(../pics/red-button.png);
+    background-image: url(../pics/play-button.jpg);
 }
 </style>
