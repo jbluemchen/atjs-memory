@@ -11,7 +11,7 @@ export default {
             required: true
         },
         value: {
-            type: Number,
+            type: String,
             required: true
         },
         visible: {
@@ -39,6 +39,7 @@ export default {
 <template>
     <div class="card" @click="selectCard">
         <div v-if="visible" class="card-face front">
+            <audio src="../sounds/${value}.wav"></audio>
         </div>
         <div v-else class="card-face back">
     </div>
