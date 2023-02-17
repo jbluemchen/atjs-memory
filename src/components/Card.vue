@@ -38,9 +38,7 @@ export default {
 <template>
     <div class="card" @click="selectCard">
         <div v-if="visible" class="card-face front">
-            <img :src="`/pics/${value}.png`" :alt="value" />
-            <!-- Final try to get the audio to work
-                <audio :src="`/sounds/${value}.wav`"></audio>   -->
+            <img :src="`/pics/${value}.png`" class="pictures" :alt="value" />
         </div>
         <div v-else class="card-face back">
     </div>
@@ -49,7 +47,7 @@ export default {
 
 <style>
 .card {
-  border: 5px solid black;
+  border: 5px solid lightgreen;
   position: relative;
   padding: 0px;
 }
@@ -62,6 +60,6 @@ export default {
     background-color: #fff;
 }
 .card-face.back {
-    background-image: url(../pics/genshin-icon.png);
+    background-image: url(../pics/genshin-logo.png);
 }
 </style>

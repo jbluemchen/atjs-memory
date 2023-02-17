@@ -41,7 +41,7 @@ export default{
   
     }
 
-    const cardItems = ['ayaka', 'baal', 'collei', 'kazuha', 'mona', 'noelle']
+    const cardItems = ['ayaka', 'baal', 'beidou', 'kazuha', 'kokomi', 'mona']
 
     cardItems.forEach(item => {
       cardList.value.push({
@@ -149,6 +149,7 @@ export default{
 html {
   background-color: lightgreen;
 }
+
 #app {
   font-family: 'Courier New', Courier, monospace;
   text-align: center;
@@ -158,8 +159,8 @@ html {
 
 .game-board{
   display: grid;
-  grid-template-columns: 100px 100px 100px 100px;
-  grid-template-rows: 100px 100px 100px;
+  grid-template-columns: 150px 150px 150px 150px;
+  grid-template-rows: 150px 150px 150px;
   grid-column-gap: 30px;
   grid-row-gap: 30px;
   justify-content: center;
