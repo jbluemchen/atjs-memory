@@ -41,7 +41,7 @@ export default{
   
     }
 
-    const cardItems = ['clap', 'hihat', 'kick', 'perc', 'snare', 'tom']
+    const cardItems = ['ayaka', 'baal', 'collei', 'kazuha', 'mona', 'noelle']
 
     cardItems.forEach(item => {
       cardList.value.push({
@@ -127,7 +127,7 @@ export default{
 </script>
 
 <template>
-  <h1>Sound memory</h1>
+  <h1>Genshin Impact Memory</h1>
   <section class="game-board">
     <Card 
     v-for="(card, index) in cardList"
@@ -146,6 +146,9 @@ export default{
 
 
 <style>
+html {
+  background-color: lightgreen;
+}
 #app {
   font-family: 'Courier New', Courier, monospace;
   text-align: center;
@@ -165,7 +168,7 @@ export default{
 .playAgain {
   font-weight: bold;
   align-items: center;
-  background-color: hotpink;
+  background-color: white;
   border: 2px solid #111;
   border-radius: 8px;
   box-sizing: border-box;

@@ -1,5 +1,4 @@
 <script>
-
 export default {
     props: {
         matched: {
@@ -39,7 +38,9 @@ export default {
 <template>
     <div class="card" @click="selectCard">
         <div v-if="visible" class="card-face front">
-            <audio src="../sounds/${value}.wav"></audio>
+            <img :src="`/pics/${value}.png`" :alt="value" />
+            <!-- Final try to get the audio to work
+                <audio :src="`/sounds/${value}.wav`"></audio>   -->
         </div>
         <div v-else class="card-face back">
     </div>
@@ -48,7 +49,7 @@ export default {
 
 <style>
 .card {
-  border: 5px solid #fff;
+  border: 5px solid black;
   position: relative;
   padding: 0px;
 }
@@ -58,9 +59,9 @@ export default {
     position: absolute;
 }
 .card-face.front {
-    background-image: url(../pics/pause-button.jpg);
+    background-color: #fff;
 }
 .card-face.back {
-    background-image: url(../pics/play-button.jpg);
+    background-image: url(../pics/genshin-icon.png);
 }
 </style>
