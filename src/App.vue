@@ -41,7 +41,7 @@ export default{
   
     }
 
-    const cardItems = ['ayaka', 'baal', 'beidou', 'kazuha', 'kokomi', 'mona']
+    const cardItems = ['ayaka', 'baal', 'beidou', 'childe', 'kazuha', 'kokomi', 'mona', 'sayu', 'thoma']
 
     cardItems.forEach(item => {
       cardList.value.push({
@@ -147,22 +147,22 @@ export default{
 
 <style>
 html {
-  background-color: lightgreen;
+  background-image: url(../public/pics/genshin-background.jpg);
 }
 
 #app {
   font-family: 'Courier New', Courier, monospace;
   text-align: center;
-  color: #111;
+  color: #000000;
   margin-top: 60px;
 }
 
 .game-board{
   display: grid;
-  grid-template-columns: 150px 150px 150px 150px;
+  grid-template-columns: 150px 150px 150px 150px 150px 150px;
   grid-template-rows: 150px 150px 150px;
-  grid-column-gap: 30px;
-  grid-row-gap: 30px;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
   justify-content: center;
 }
 

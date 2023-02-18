@@ -40,6 +40,9 @@ export default {
         <div v-if="visible" class="card-face front">
             <img :src="`/pics/${value}.png`" class="pictures" :alt="value" />
         </div>
+        <!--last try audio
+            <audio :src="`/sounds/${value}.wav`"></audio>
+        -->
         <div v-else class="card-face back">
     </div>
     </div>
@@ -47,7 +50,7 @@ export default {
 
 <style>
 .card {
-  border: 5px solid lightgreen;
+  border: 5px solid lightblue;
   position: relative;
   padding: 0px;
 }
