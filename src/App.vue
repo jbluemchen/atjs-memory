@@ -147,7 +147,7 @@ export default{
 
 <style>
 html {
-  background-image: url(../public/pics/genshin-background.jpg);
+  background-image: url(/pics/genshin-background.jpg);
 }
 
 #app {
